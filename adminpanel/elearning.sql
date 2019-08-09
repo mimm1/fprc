@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2019 at 02:22 PM
+-- Generation Time: Aug 09, 2019 at 01:34 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -100,7 +100,7 @@ CREATE TABLE `school` (
 --
 
 INSERT INTO `school` (`id`, `name`, `schoolpass`, `schoolcontact`, `schoolmail`, `schooladdr`, `schoolprincipal`, `schoolregdate`, `schoolstatus`, `license_duration`) VALUES
-(200, '', '', 0, '', '', '', '0000-00-00', 0, NULL);
+(345, 'Happy Place Grammer School', 'happyplace', 325254563, 'place@gmail.com', 'T-67 sector 11-A North Karachi', 'Miss Noureen', '2019-08-07', 1, 23);
 
 -- --------------------------------------------------------
 
@@ -120,9 +120,11 @@ CREATE TABLE `school_setup` (
 
 INSERT INTO `school_setup` (`school_id`, `schoolpass`, `moduleid`) VALUES
 (0, '', 0),
+(123, 'happyplace', 0),
 (400, '', 0),
 (500, '', 0),
 (600, '', 0),
+(670, 'midasia', 0),
 (700, '', 0),
 (4909, '', 0);
 
