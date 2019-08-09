@@ -114,7 +114,7 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li >
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
@@ -126,7 +126,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li class="active">
-                                <a href="schoollistt.html" class="">
+                                <a href="schoollist.php" class="">
                                     <span>Create School</span>
                                 </a>
 							</li>
@@ -155,7 +155,7 @@
                             School List</h2>
 							<ul class="header-dropdown m-r--5">
 <!-- <a href="Schoolform.php"><Button class="btn-primary" style="float:right;padding-top:08px;">Add School</button></a> -->
-<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Add School</a>                                           
+<a href="" style="background-color:#F44336 !important" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Add School</a>                                           
 						<li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
@@ -177,6 +177,7 @@
                                             <th>Address</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
+                                            
                                         
                                         </tr>
                                     </thead>
