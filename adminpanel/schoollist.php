@@ -103,7 +103,7 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="login.php"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -169,14 +169,46 @@
                             </ul>
                         </div>
                         <div class="body">
+                        <?php
+// session_start();
+$id="";
+$name="";
+$address="";
+$email="";
+$phone="";
+$status="";
+// $email=$_SESSION['loginemail'];
+require 'connection.php';
+$sql = "SELECT * FROM `school`";
+$result=mysqli_query($con,$sql);
+if (mysqli_num_rows($result)==0){
+
+}
+else{
+    while ($row=mysqli_fetch_assoc($result)) {
+        $name=$row['name'];
+        $id=$row['id'];
+        $address=$row['schooladdr'];
+        $email=$row['schoolmail'];
+        $phone=$row['schoolcontact'];
+        $status=$row['schoolstatus'];
+    }
+}
+
+
+
+
+?>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
+                                            <th>Status</th>
                                             
                                         
                                         </tr>
@@ -184,8 +216,32 @@
 
                                     <tbody>
                                         <tr>
-                                            <td> </td>
-                                            <td> </td>
+                                        <td><?php
+                                            echo $id;
+                                            ?> </td>
+                                            <td><?php
+                                            echo $name;
+                                            ?> </td>
+                                            
+                                            <td><?php
+                                            echo $address;
+                                            ?> </td>
+                                            <td>
+                                            <?php
+                                            echo $email;
+                                            ?></td>
+                                            <td><?php
+                                            echo $phone;
+                                            ?></td>
+                                            <td>
+                                            <?php
+                                            echo $status;
+                                            ?></td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
@@ -194,13 +250,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                                                                    </tr>
+                                                                                    </tr> -->
                                         </tbody>
                                 </table>
                             </div>
