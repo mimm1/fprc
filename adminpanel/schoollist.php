@@ -31,6 +31,31 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 </head>
 
 <body class="theme-red">
@@ -169,36 +194,7 @@
                             </ul>
                         </div>
                         <div class="body">
-                        <?php
-// session_start();
-$id="";
-$name="";
-$address="";
-$email="";
-$phone="";
-$status="";
-// $email=$_SESSION['loginemail'];
-require 'connection.php';
-$sql = "SELECT * FROM `school`";
-$result=mysqli_query($con,$sql);
-if (mysqli_num_rows($result)==0){
-
-}
-else{
-    while ($row=mysqli_fetch_assoc($result)) {
-        $name=$row['name'];
-        $id=$row['id'];
-        $address=$row['schooladdr'];
-        $email=$row['schoolmail'];
-        $phone=$row['schoolcontact'];
-        $status=$row['schoolstatus'];
-    }
-}
-
-
-
-
-?>
+                   
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
@@ -209,16 +205,47 @@ else{
                                             <th>Email</th>
                                             <th>Phone Number</th>
                                             <th>Status</th>
+                                            <th colspan="2" style="padding-left: 6%;">Actions</th>
                                             
                                         
                                         </tr>
                                     </thead>
 
                                     <tbody>
+                                    <?php
+                                // session_start();
+                                $id="";
+                                $name="";
+                                $address="";
+                                $email="";
+                                $phone="";
+                                $status="";
+                                // $email=$_SESSION['loginemail'];
+                                require 'connection.php';
+                                $sql = "SELECT * FROM `school`";
+                                $result=mysqli_query($con,$sql);
+                                if (mysqli_num_rows($result)==0){
+
+                                }
+                                else{
+                                    while ($row=mysqli_fetch_assoc($result)) {
+                                        $name=$row['name'];
+                                        $id=$row['id'];
+                                        $address=$row['schooladdr'];
+                                        $email=$row['schoolmail'];
+                                        $phone=$row['schoolcontact'];
+                                        $status=$row['schoolstatus'];
+                                
+
+
+
+
+?>
                                         <tr>
                                         <td><?php
                                             echo $id;
                                             ?> </td>
+                                            
                                             <td><?php
                                             echo $name;
                                             ?> </td>
@@ -237,7 +264,45 @@ else{
                                             <?php
                                             echo $status;
                                             ?></td>
+                                            <td><a style="background-color:#F44336 !important" id="up" class="btn btn-default btn-rounded mb-4">Update</a></td>
+                                            <td><a style="background-color:#F44336 !important" class="btn btn-default btn-rounded mb-4">Delete</a></td>
+                                          
                                         </tr>
+                                        <script>
+                    //   $( document ).ready(function(){
+                        // $( window ).load(function(){
+                            $("#up").one('click',function() {
+                                // $('#up').css('display','none');
+                        
+                        $("#update").append('<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div class="card"><div class="header" id="london"> <form action="<?php $_PHP_SELF ?>"  id="form_validation" method="POST" enctype="multipart/form-data"><h1>Update Information</h1>  <div class="form-group form-float"><div class="form-line"><input type="text" class="form-control" name="sname" value="" placeholder="<?php echo $name?>" required><label class="form-label"></label></div></div><div class="form-group form-float"><div class="form-line"><input type="text" class="form-control" name="schooladdr"value="" placeholder="<?php echo $address?>" required><label class="form-label"></label></div></div><div class="form-group form-float"><div class="form-line"><input type="number" class="form-control" name="id"value="" placeholder="<?php echo $id?>"required><label class="form-label"></label></div></div><div class="form-group form-float"><div class="form-line"><input type="email" class="form-control" name="schoolmail"value="" placeholder="<?php echo $email?>" required><label class="form-label"></label></div><br><div class="form-line"><input type="number" class="form-control" name="schoolstatus"value="" placeholder="<?php echo $status?>" required><label class="form-label"></label></div><br><div class="form-line"><input type="number" class="form-control" name="schoolcontact" value="" placeholder="<?php echo $phone?>" required><label class="form-label"></label></div></div><button class="btn btn-primary waves-effect"  name="Update" id="Update" value="Update" type="submit">UPDATE</button></form></div></div></div>');
+                      });
+</script>
+                                        <?php
+                                    }
+                                }
+                                ?>
+
+<?php
+// session_start();
+require "connection.php";
+if(isset($_POST['Update'])){
+$schoolmail =$_POST['schoolmail'];
+$sname=$_POST['sname'];
+$schooladdr =$_POST['schooladdr'];
+$id=$_POST['id'];
+$schoolcontact =$_POST['schoolcontact'];
+$schoolstatus =$_POST['schoolstatus'];
+$ins_query="UPDATE `school` SET  `sname` = '$sname', `schoolmail` = '$schoolmail', `schooladdr` = '$schooladdr', `schoolcontact` = '$schoolcontact', `schoolstatus` = '$schoolstatus' WHERE `school`.`id` = $id;";
+if(mysqli_query($con,$ins_query)) {
+    //echo $id;
+    //header("Location: schoollist.php");
+}
+else{
+     echo $id;
+    //header("location: schoolist.php");
+echo "not updated";
+}}
+?>
                                         <!-- <tr>
                                             <td></td>
                                             <td></td>
@@ -251,10 +316,19 @@ else{
                                             <td></td>
                                             <td></td>
                                                                                     </tr> -->
+                                 
                                         </tbody>
+                                       
                                 </table>
+                                <!-- <button>Update</button>
+                                            <button>Delete</button> -->
+                                
                             </div>
                         </div>
+                        
+                    </div>
+            
+                    <div id="update">
                     </div>
                 </div>
             </div>
@@ -262,32 +336,13 @@ else{
         </div>
     </section>
 
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    
 
-    <!-- Bootstrap Core Js -->
-    <script src="plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Select Plugin Js -->
-    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="plugins/node-waves/waves.js"></script>
-
-    <!-- Jquery DataTable Plugin Js -->
-    <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
+  
+    
+<?php 
+// $id2="";$name2="";$address2="";$email2="";$phone2="";$status2="";require 'connection.php';$sql2 = "SELECT * FROM `school` WHERE `school`.`id` = $id2;";$result2=mysqli_query($con,$sql2);if (mysqli_num_rows($result2)==0){}else{while ($row2=mysqli_fetch_assoc($result2)) { $name2=$row2['name'];$id2=$row2['id'];$address2=$row2['schooladdr'];$email2=$row2['schoolmail'];$phone2=$row2['schoolcontact'];$status2=$row2['schoolstatus'];    }}
+?>
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/tables/jquery-datatable.js"></script>
