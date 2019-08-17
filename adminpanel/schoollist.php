@@ -284,21 +284,22 @@
 
 <?php
 // session_start();
-require "connection.php";
+
 if(isset($_POST['Update'])){
-$schoolmail =$_POST['schoolmail'];
-$sname=$_POST['sname'];
-$schooladdr =$_POST['schooladdr'];
-$id=$_POST['id'];
-$schoolcontact =$_POST['schoolcontact'];
-$schoolstatus =$_POST['schoolstatus'];
-$ins_query="UPDATE `school` SET  `sname` = '$sname', `schoolmail` = '$schoolmail', `schooladdr` = '$schooladdr', `schoolcontact` = '$schoolcontact', `schoolstatus` = '$schoolstatus' WHERE `school`.`id` = $id;";
+require "connection.php";
+$schoolmail2 =$_POST['schoolmail'];
+$sname2=$_POST['sname'];
+$schooladdr2 =$_POST['schooladdr'];
+$id2=$_POST['id'];
+$schoolcontact2 =$_POST['schoolcontact'];
+$schoolstatus2 =$_POST['schoolstatus'];
+$ins_query="UPDATE `school` SET  `name` = '$sname2', `schoolmail` = '$schoolmail2', `schooladdr` = '$schooladdr2', `schoolcontact` = '$schoolcontact2', `schoolstatus` = '$schoolstatus2' WHERE `school`.`id` = $id2;";
 if(mysqli_query($con,$ins_query)) {
     //echo $id;
     //header("Location: schoollist.php");
 }
 else{
-     echo $id;
+     echo $id2;
     //header("location: schoolist.php");
 echo "not updated";
 }}
